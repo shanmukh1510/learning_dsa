@@ -1,0 +1,28 @@
+i have learned about the special binary string problem in the leetcode
+conditions:
+1.the no of 0's and 1's should be equal
+2.every string or pranthesis should start with 1.
+
+code:
+ class Solution:
+    def makeLargestSpecial(self, s: str) -> str:
+        count = 0
+        start = 0
+        new = []
+        for j,char in enumerate(s):
+            if char == '1':
+                count += 1
+            else:
+                count -= 1
+            
+            if count == 0:
+                middle_part = self.makeLargestSpecial(s[start+1:j]) //recursive part of whole problem
+                new.append("1"+ middle_part +"0")
+                start = j+1
+        new.sort(reverse = True)
+        return "".join(new)
+
+explanation:
+1.at first it checks the equal no of 1's and 0's 
+2.and then it checks recursively the middle_part and append to the new list.
+3.the sort the new list and join it
