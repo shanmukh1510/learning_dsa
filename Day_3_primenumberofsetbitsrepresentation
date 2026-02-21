@@ -1,0 +1,23 @@
+today the leetcode problem a bit easy ,its just to find the binaary number consists of how many 1's and that 1's count is prime or not.
+and that should br returned.
+CODE:
+class Solution:
+    def countPrimeSetBits(self, left: int, right: int) -> int:  
+        def is_prime(n):
+            if n < 2:
+                return False
+            for j in range(2, n):
+                if n % j == 0:
+                    return False
+            return True 
+        result = 0  
+        for i in range(left, right+1):
+            count_1 = 0
+            temp = i 
+            while temp > 0:
+                if temp % 2 == 1:
+                    count_1 += 1
+                temp = temp // 2  
+            if is_prime(count_1):
+                result += 1
+        return result
