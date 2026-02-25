@@ -1,0 +1,11 @@
+there are so many approaches but i got the optimal solution by counting the 1's in the number.
+if the number of are equal then i need to check the number.
+in this code:
+ i learned how to use lambda function and also how to use in the function like sort(),etc
+ syntax: arr.sort(key = lambda variables:condition)
+
+CODE:
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        arr.sort(key = lambda num:(num.bit_count(),num))
+        return arr
